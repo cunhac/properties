@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<body>
+<section class="hero is-info">
+    <div class="hero-body">
+        <p class="title">
+            Update register
+        </p>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<form method="post">
+    <p class="tag is-info" style="width:230px;height:35px;font-size:20px">Type id:</p>
+    <input type="text" name="type id">
+    <br>
+    <br>
+    <input type="submit" class="button is-info" value="Filter">
+    <br><br><br>
+    <p class="tag is-info" style="width:230px;height:35px;font-size:20px">Update by:</p>
+    <select name=update_register method="GET" action="/">
+        {% for update in update_register %}
+        <option value="{{update}}" SELECTED>{{update}}</option>
+        {% endfor %}
+    </select>
+</form>
+
+<br>
+<input class="button is-info" type="submit" value="Filter">
+</body>
+</html>
