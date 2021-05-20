@@ -1,5 +1,3 @@
-# http://pythonclub.com.br/peewee-um-orm-python-minimalista.html
-# https://gist.github.com/natorsc/2aa22acad48379c446f8141894da0d8
 from flask import Flask, request, render_template, redirect, url_for
 from property import lofts_register
 from sqlalchemy import create_engine
@@ -63,37 +61,9 @@ def select_register():
 @app.route('/state', methods=['GET', 'POST'])
 def state():
     if request.method == "POST":
-        print('post')
-        return redirect(url_for("filter"))
-    return render_template('select/state.html', states=STATES)
-
-
-@app.route('/filter', methods=["GET"])
-def filter(state):
-
-    dados = session.query(Lofts).filter(Lofts.state == state)
-
-    dados_filter = session.execute(dados)
-    print('filter', dados_filter)
-    return render_template('select/filter.html', dados=dados_filter)
-
-    # def product(product_id):
-    #     product = Products.query.filter_by(id=product_id).first() or abort(
-    #         404, "produto nao encontrado"
-    #     )
-    #     return render_template("product.html", product=product)
-
-    # if request.method == "POST":
-    #     engine = create_engine("sqlite:///lofts_register.db", echo=False)
-    #
-    #     Session = sessionmaker(bind=engine)
-    #     session = Session()
-    #
-    #     dados= session.query(Lofts).filter(Lofts.state == state)
-    #
-    #     dados_filter = session.execute(dados)
-    #
-    #     return render_template(dados=dados_filter)
+        dados = session.query(Lofts).filter(Lofts.state == "a").all()
+        return render_template('select/state.html', states=STATES, dados=dados)
+    return render_template('select/state.html', states=STATES, dados=None)
 
 
 @app.route('/total value', methods=['GET'])
@@ -121,38 +91,5 @@ def delete_register():
     return render_template('select/delete.html')
 
 
-if __name__ != "__main__":
-    pass
-else:
-    app.run()
-
-# @app.route("/api/searchstate/<state>", methods=['POST'])
-# def searchstate(state):
-#     pass
-
-
 if "__main__" == __name__:
     app.run(debug=True)
-
-# conn = sqlite3.connect('lofts_register.db')
-# cursor = conn.cursor()
-# dados = session.query(Lofts).filter(Lofts.state == 1).all()
-# return dados
-
-# @app.route('/api/state/<_state>', methods=['POST'])
-# def api_state(_state):
-#     dados = session.query(Lofts).filter(Lofts.state == _state).all()
-#     _data = {'response':[]}
-#     if dados:
-#         list_dados = []
-#         for dado in dados:
-#             _data_json = dict(
-#                 id=dado.id,
-#                 state=dado.state,
-#                 city=dado.city,
-#             )
-#             list_dados.append(_data_json)
-#         _data = {'response':list_dados}
-#         print(_data)
-#
-#     return _data

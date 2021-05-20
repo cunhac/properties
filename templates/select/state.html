@@ -19,15 +19,46 @@
 <form method="post">
     <p class="tag is-info" style="width:230px;height:35px;font-size:20px">state:</p>
     <select name=state method="GET" action="/">
-        {% for state in states %}
-        <option value="{{state}}" SELECTED>{{state}}</option>
+        {% for st in states %}
+        <option value="{{st}}" SELECTED>{{st}}</option>
         {% endfor %}
     </select>
 </form>
 
 <br>
-<button class="button is-info">
-<input class="button is-info" type="submit" name= "button" value="Filter">
-</button>
+<form method="post">
+    <button class="button is-info">
+        <input class="button is-info" type="submit" name="button" value="Filter">
+    </button>
+</form>
+
+{% if dados %}
+<table class="table is-striped is-hoverable">
+    <thead>
+    <tr>
+        <th><abbr title="Id">Id</abbr></th>
+        <th><abbr title="city">city</abbr></th>
+        <th><abbr title="size_m2">size_m2</abbr></th>
+        <th><abbr title="value">value</abbr></th>
+        <th><abbr title="condominium">condominium</abbr></th>
+        <th><abbr title="total_value">total_value</abbr></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for loft in dados %}
+    <tr>
+        <td> {{ loft.id }}</td>
+        <td> {{loft.city}}</td>
+        <td> {{loft.size_m2}}</td>
+        <td> {{loft.value}}</td>
+        <td> {{loft.condominium}}</td>
+        <td> {{loft.total_value}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+
 </body>
 </html>
