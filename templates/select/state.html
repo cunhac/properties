@@ -16,17 +16,15 @@
 <br>
 <br>
 <br>
-<form method="post">
+<form method="post" >
     <p class="tag is-info" style="width:230px;height:35px;font-size:20px">state:</p>
-    <select name=state method="GET" action="/">
-        {% for st in states %}
-        <option value="{{st}}" SELECTED>{{st}}</option>
+    <select name="select_state" method="GET" action="/">
+        {% for s in states %}
+        <option value="{{s}}" SELECTED>{{s}}</option>
         {% endfor %}
     </select>
-</form>
-
-<br>
-<form method="post">
+    <br>
+    <br>
     <button class="button is-info">
         <input class="button is-info" type="submit" name="button" value="Filter">
     </button>
@@ -36,29 +34,42 @@
 <table class="table is-striped is-hoverable">
     <thead>
     <tr>
-        <th><abbr title="Id">Id</abbr></th>
+        <th><abbr title="id">Id</abbr></th>
         <th><abbr title="city">city</abbr></th>
+        <th><abbr title="district">district</abbr></th>
+        <th><abbr title="address">address</abbr></th>
+        <th><abbr title="number">number</abbr></th>
+        <th><abbr title="walk">walk</abbr></th>
         <th><abbr title="size_m2">size_m2</abbr></th>
+        <th><abbr title="garage">garage</abbr></th>
         <th><abbr title="value">value</abbr></th>
         <th><abbr title="condominium">condominium</abbr></th>
+        <th><abbr title="iptu">iptu</abbr></th>
         <th><abbr title="total_value">total_value</abbr></th>
+        <th><abbr title="status">status</abbr></th>
     </tr>
     </thead>
     <tbody>
     {% for loft in dados %}
     <tr>
-        <td> {{ loft.id }}</td>
+        <td> {{loft.id }}</td>
         <td> {{loft.city}}</td>
+        <td> {{loft.district}}</td>
+        <td> {{loft.address}}</td>
+        <td> {{loft.number}}</td>
+        <td> {{loft.walk}}</td>
         <td> {{loft.size_m2}}</td>
+        <td> {{loft.garage}}</td>
         <td> {{loft.value}}</td>
         <td> {{loft.condominium}}</td>
+        <td> {{loft.iptu}}</td>
         <td> {{loft.total_value}}</td>
+        <td> {{loft.status}}</td>
     </tr>
     {% endfor %}
     </tbody>
 </table>
 {% endif %}
-
-
 </body>
 </html>
+

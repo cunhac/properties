@@ -18,16 +18,55 @@
 <br>
 <form method="post">
     <p class="tag is-info" style="width:230px;height:35px;font-size:20px">total_value:</p>
-    <select name= total_value method="GET" action="/">
-        {% for total_value in total_value %}
-        <option value="{{total_value}}" SELECTED>{{total_value}}</option>
+    <select name= select_total method="GET" action="/">
+        {% for t in total_value %}
+        <option value="{{t}}" SELECTED>{{t}}</option>
         {% endfor %}
     </select>
+    <br>
+    <br>
+    <button class="button is-info">
+        <input class="button is-info" type="submit" name="button" value="Filter">
+    </button>
 </form>
-
 <br>
-<input class="button is-info" type="submit" value="Filter">
+{% if dados %}
+<table class="table is-striped is-hoverable">
+    <thead>
+    <tr>
+        <th><abbr title="id">Id</abbr></th>
+        <th><abbr title="state">state</abbr></th>
+        <th><abbr title="city">city</abbr></th>
+        <th><abbr title="district">district</abbr></th>
+        <th><abbr title="address">address</abbr></th>
+        <th><abbr title="number">number</abbr></th>
+        <th><abbr title="walk">walk</abbr></th>
+        <th><abbr title="size_m2">size_m2</abbr></th>
+        <th><abbr title="garage">garage</abbr></th>
+        <th><abbr title="value">value</abbr></th>
+        <th><abbr title="condominium">condominium</abbr></th>
+        <th><abbr title="status">status</abbr></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for loft in dados %}
+    <tr>
+        <td> {{ loft.id }}</td>
+        <td> {{ loft.state }}</td>
+        <td> {{loft.city}}</td>
+        <td> {{loft.district}}</td>
+        <td> {{loft.address}}</td>
+        <td> {{loft.number}}</td>
+        <td> {{loft.walk}}</td>
+        <td> {{loft.size_m2}}</td>
+        <td> {{loft.garage}}</td>
+        <td> {{loft.value}}</td>
+        <td> {{loft.condominium}}</td>
+        <td> {{loft.status}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
 </body>
 </html>
-
-
