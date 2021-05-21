@@ -61,24 +61,36 @@ def select_register():
 @app.route('/state', methods=['GET', 'POST'])
 def state():
     if request.method == "POST":
-        dados = session.query(Lofts).filter(Lofts.state == "a").all()
+        select_state = request.form.get('select_state')
+        dados = session.query(Lofts).filter(Lofts.state == select_state).all()
         return render_template('select/state.html', states=STATES, dados=dados)
     return render_template('select/state.html', states=STATES, dados=None)
 
 
-@app.route('/total value', methods=['GET'])
+@app.route('/total_value', methods=['GET', 'POST'])
 def total_value():
-    return render_template('select/total_value.html', total_value=TOTAL_VALUE)
+    if request.method == "POST":
+        select_total = request.form.get("select_total")
+        dados = session.query(Lofts).filter(Lofts.total_value == select_total).all()
+        return render_template('select/total_value.html', total_value=TOTAL_VALUE, dados=dados)
+    return render_template('select/total_value.html', total_value=TOTAL_VALUE, dados=None)
 
 
-@app.route('/dropdown_status', methods=['GET'])
+@app.route('/dropdown_status', methods=['GET', 'POST'])
 def status():
-    return render_template('select/status.html', status=STATUS)
+    if request.method == "POST":
+        select_status = request.form.get('select_status')
+        dados = session.query(Lofts).filter(Lofts.status == select_status).all()
+        return render_template('select/status.html', status=STATUS, dados=dados)
+    return render_template('select/status.html', status=STATUS, dados=None)
 
 
-@app.route('/dropdown_select all', methods=['GET'])
+@app.route('/dropdown_select all', methods=['GET', "POST"])
 def select_all():
-    return render_template('select/select_all.html', select_all=SELECT_ALL)
+    if request.method == "POST":
+        dados = session.query(Lofts).all()
+        return render_template('select/select_all.html', select_all=SELECT_ALL, dados=dados)
+    return render_template('select/select_all.html', select_all=SELECT_ALL, dados=None)
 
 
 @app.route('/dropdown_update', methods=['GET'])
