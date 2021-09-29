@@ -3,12 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-<section class="hero is-info">
-    <div class="hero-body">
-        <p class="title">
+        <p>
             STATES
         </p>
     </div>
@@ -39,7 +37,7 @@
         <th><abbr title="district">district</abbr></th>
         <th><abbr title="address">address</abbr></th>
         <th><abbr title="number">number</abbr></th>
-        <th><abbr title="walk">walk</abbr></th>
+        <th><abbr title="floor">floor</abbr></th>
         <th><abbr title="size_m2">size_m2</abbr></th>
         <th><abbr title="garage">garage</abbr></th>
         <th><abbr title="value">value</abbr></th>
@@ -57,7 +55,7 @@
         <td> {{loft.district}}</td>
         <td> {{loft.address}}</td>
         <td> {{loft.number}}</td>
-        <td> {{loft.walk}}</td>
+        <td> {{loft.floor}}</td>
         <td> {{loft.size_m2}}</td>
         <td> {{loft.garage}}</td>
         <td> {{loft.value}}</td>

@@ -4,12 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome Rent Now!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   </head>
   <body>
-      <section class="hero is-info">
-      <div class="hero-body">
-        <p class="title">
+        <p>
           Lofts_register
         </p>
       </div>
@@ -39,8 +37,8 @@
                 <input style="width:230px;height:30px" type="text" name="number">
                 <br>
                 <br>
-                <p class="tag is-info" style="width:230px;height:35px;font-size:20px">Walk:</p>
-                <input style="width:230px;height:30px" type="text" name="walk">
+                <p class="tag is-info" style="width:230px;height:35px;font-size:20px">floor:</p>
+                <input style="width:230px;height:30px" type="text" name="floor">
                 <br>
                 <br>
                 <p class="tag is-info" style="width:230px;height:35px;font-size:20px"> Size_m2:</p>

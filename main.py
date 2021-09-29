@@ -3,7 +3,7 @@ from property import lofts_register
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from create import Lofts
-from cfg import STATES, STATUS, SELECT_REGISTER, TOTAL_VALUE, SELECT_ALL, UPDATE_REGISTER
+from cfg import STATES, STATUS, SELECT_REGISTER, TOTAL_VALUE, SELECT_ALL, UPDATE_REGISTER, DELETE_REGISTER, ID
 
 engine = create_engine("sqlite:///lofts_register.db", echo=False)
 
@@ -18,13 +18,13 @@ def home():
     if request.method == "POST":
         if request.form['button'] == "Register loft":
             return redirect(url_for("register"))
-        if request.form['button'] == "Select loft":
+        elif request.form['button'] == "Select loft":
             return redirect(url_for("select_register"))
-        if request.form['button'] == "Select all lofts":
+        elif request.form['button'] == "Select all lofts":
             return redirect(url_for("select_all"))
-        if request.form['button'] == "Update register":
+        elif request.form['button'] == "Update register":
             return redirect(url_for("update_register"))
-        if request.form['button'] == "Delete register":
+        elif request.form['button'] == "Delete register":
             return redirect(url_for("delete_register"))
     return render_template('home.html')
 
@@ -98,9 +98,27 @@ def update_register():
     return render_template('select/update_register.html', update_register=UPDATE_REGISTER)
 
 
-@app.route('/delete', methods=['GET'])
+@app.route('/delete', methods=["GET", "POST"])
 def delete_register():
+    if request.method == "POST":
+        select_id = request.form.get('select_id')
+        dados = session.query(Lofts).filter(Lofts.id == select_id).all()
+        return render_template('select/delete.html', id=ID, dados=dados)
+    return render_template('select/delete.html', id=ID, dados=None)
+
+
+@app.route('/confirm', methods=["GET", "POST"])
+def confirm_delete(delete_register):
+    if request.method == "POST":
+        select_id = request.form.get('select_id')
+        if request.form['button'] == "Yes":
+            session.query(Lofts).filter(Lofts.id == select_id).delete()
+            return render_template('select/delete.html')
+        elif request.form['button'] == "No":
+            return render_template('select/delete.html')
     return render_template('select/delete.html')
+
+
 
 
 if "__main__" == __name__:
