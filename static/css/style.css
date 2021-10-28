@@ -18,7 +18,7 @@ html{
 }
 
 .section-container{
-    height: 100vh;
+    height: 85vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -32,21 +32,38 @@ html{
     background-image: url('/static/imagens/fundo.png');
 }
 
+.text-input{
+    height: 35px;
+    padding: 10px;
+    color: black;
+    width: 230px;
+    font-size: 20px;
+    font-weight: bold
+}
+
+.input{
+    height: 30px;
+    padding: 25px;
+    width: 230px;
+    font-size: 15px;
+    color: black
+}
 
 .footer{
     height: 25px;
     padding: 10px;
     text-align: center;
     background-color: #363636;
-    color: #fff;
+    color: #fff
+    
 }
 
 .button{
     background-color: #1C1C1C;
+    background-position: center;
     color: #fff;
-    height: 20px;
-    padding: 20px;
+    height: 35px;
+    padding: 25px;
     text-align: center;
-    text-rendering: auto;
-    text-size-adjust: 20px;
+    font-size: 20px
 }
