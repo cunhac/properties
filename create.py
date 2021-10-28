@@ -19,7 +19,7 @@ class Lofts(Base):
     district = Column(String(50))
     address = Column(String(70))
     number = Column(Integer)
-    walk = Column(Integer)
+    floor = Column(Integer)
     size_m2 = Column(Float)
     garage = Column(Integer)
     value = Column(Float)

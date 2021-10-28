@@ -20,5 +20,8 @@ STATUS = ["Free", "Busy", "Select"]
 
 SELECT_ALL = ["Select all"]
 
-UPDATE_REGISTER = ["state", "city", "district", "address", "number", "walk", "size_m2", "garage", "value",
+UPDATE_REGISTER = ["state", "city", "district", "address", "number", "floor", "size_m2", "garage", "value",
                    "condominium", "iptu", "total_value", "status", "Select"]
+ID = ["id"]
+
+DELETE_REGISTER = ["id"]
